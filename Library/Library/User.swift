@@ -22,6 +22,14 @@ class User {
     static var lastNameKey: String = "lastName"
     static var idKey: String = "id"
     
+    // MARK: - Method
+    static func array(json: [[String: Any]]) -> [User]? {
+        let back = json.flatMap(User.init(json:))
+        guard back.count == json.count else {
+            return nil
+        }
+        return back
+    }
     
     // MARK: - Initializers
     init(userName: String, firstName: String, lastName: String, id: Int) {
